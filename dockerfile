@@ -36,7 +36,7 @@ COPY ./config/* /etc/lighttpd
 
 EXPOSE 80
 
-CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
+CMD ["RUN", "lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
 
 
 
