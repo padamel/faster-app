@@ -30,11 +30,20 @@ COPY ./html/* /var/www/html
 
 # copy the wordpress directory to the web directory
 
-COPY ./my-wordpress/* /var/www
+COPY ./my-wordpress/* /var/www/wordpress
+
+# change directory
+
+RUN cd /var/www &&\
+    ls -la
+
+# create a user www-data and group www-data
+
+RUN adduser www-data -D -H -h /var/www -G www-data -s /sbin/nologin
 
 # give full ownership of wordpress to user www-data
 
-chown -R www-data:www-data wordpress 
+RUN chown -R www-data:www-data /var/www/wordpress/ 
 
 # copy the lighttpd config file under the config directory
 
