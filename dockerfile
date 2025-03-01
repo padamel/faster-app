@@ -28,6 +28,14 @@ RUN apk update && apk upgrade
 
 COPY ./html/* /var/www/html
 
+# copy the wordpress directory to the web directory
+
+COPY ./my-wordpress/* /var/www
+
+# give full ownership of wordpress to user www-data
+
+chown -R www-data:www-data wordpress 
+
 # copy the lighttpd config file under the config directory
 
 COPY ./config/* /etc/lighttpd
